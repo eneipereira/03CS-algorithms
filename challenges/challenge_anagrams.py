@@ -8,14 +8,17 @@ def quick_sort(letters, start, end):
 def partition(letters, start, end):
     pivot = letters[end]
     delimiter = start - 1
-    
+
     for index in range(start, end):
         if letters[index] <= pivot:
             delimiter += 1
-            letters[index], letters[delimiter] = letters[delimiter], letters[index]
-            
+            letters[index], letters[delimiter] = (
+                letters[delimiter],
+                letters[index],
+            )
+
     letters[delimiter + 1], letters[end] = letters[end], letters[delimiter + 1]
-    
+
     return delimiter + 1
 
 
@@ -31,10 +34,10 @@ def is_anagram(first_string, second_string):
 
     first_sorted = "".join(first_list)
     second_sorted = "".join(second_list)
-    
+
     if not len(first_sorted) or not len(second_sorted):
         return (first_sorted, second_sorted, False)
-    
+
     is_valid = first_sorted == second_sorted
-    
+
     return (first_sorted, second_sorted, is_valid)
